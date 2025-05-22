@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeraVe Brand Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .dashboard {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .topic-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s ease;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .topic-card.critical {
+            border-left-color: #ef4444;
+        }
+        
+        .topic-card.excellent {
+            border-left-color: #10b981;
+        }
+        
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .topic-emoji {
+            font-size: 1.5rem;
+        }
+        
+        .topic-name {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        
+        .positive { color: #10b981; }
+        .negative { color: #ef4444; }
+        .neutral { color: #6b7280; }
+        
+        .insight {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .insight strong {
+            color: #92400e;
+        }
+        
+        .keywords-section {
+            margin-top: 30px;
+        }
+        
+        .keywords-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .keywords-panel {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .keywords-panel.positive {
+            border-left: 4px solid #10b981;
+        }
+        
+        .keywords-panel.negative {
+            border-left: 4px solid #ef4444;
+        }
+        
+        .keywords-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .keyword-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        
+        .keyword-count {
+            background: #3b82f6;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .positive .keyword-count {
+            background: #10b981;
+        }
+        
+        .negative .keyword-count {
+            background: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>🏷️ CeraVe Brand Topics Overview</h1>
+            <p>Strategic insights from 1,000+ customer reviews</p>
+        </div>
+        
+        <div class="content">
+            <div class="topic-grid">
+                <div class="topic-card excellent">
+                    <div class="topic-header">
+                        <span class="topic-emoji">🌟</span>
+                        <span class="topic-name">Efficacy & Performance</span>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value neutral">586</div>
+                            <div class="metric-label">📝 Reviews</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value positive">93.9%</div>
+                            <div class="metric-label">✅ Positive</div>
+                        </div>
+                    </div>
+                    <div class="insight">
+                        <strong>💡 Insight:</strong> Exceptional performance - amplify texture messaging
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-emoji">💰</span>
+                        <span class="topic-name">Trust & Value</span>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value neutral">127</div>
+                            <div class="metric-label">📝 Reviews</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value positive">68.5%</div>
+                            <div class="metric-label">✅ Positive</div>
+                        </div>
+                    </div>
+                    <div class="insight">
+                        <strong>💡 Insight:</strong> Mixed signals - investigate value communication
+                    </div>
+                </div>
+                
+                <div class="topic-card excellent">
+                    <div class="topic-header">
+                        <span class="topic-emoji">😊</span>
+                        <span class="topic-name">Overall Satisfaction</span>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value neutral">394</div>
+                            <div class="metric-label">📝 Reviews</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value positive">95.7%</div>
+                            <div class="metric-label">✅ Positive</div>
+                        </div>
+                    </div>
+                    <div class="insight">
+                        <strong>💡 Insight:</strong> Outstanding satisfaction - leverage advocates
+                    </div>
+                </div>
+                
+                <div class="topic-card critical">
+                    <div class="topic-header">
+                        <span class="topic-emoji">📦</span>
+                        <span class="topic-name">Packaging Design</span>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value neutral">95</div>
+                            <div class="metric-label">📝 Reviews</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value negative">25.3%</div>
+                            <div class="metric-label">✅ Positive</div>
+                        </div>
+                    </div>
+                    <div class="insight">
+                        <strong>💡 Insight:</strong> Critical issues - immediate packaging fixes needed
+                    </div>
+                </div>
+            </div>
+            
+            <div class="keywords-section">
+                <h2 style="text-align: center; margin-bottom: 20px;">🔥 Top Keywords Battle</h2>
+                
+                <div class="keywords-grid">
+                    <div class="keywords-panel positive">
+                        <div class="keywords-header">
+                            <span class="topic-emoji">🌟</span>
+                            <h3>Brand Strengths</h3>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Not greasy</span>
+                            <span class="keyword-count">75</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Soft and smooth</span>
+                            <span class="keyword-count">25</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Absorbs quickly</span>
+                            <span class="keyword-count">22</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Moisturizing</span>
+                            <span class="keyword-count">20</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Best moisturizer</span>
+                            <span class="keyword-count">42</span>
+                        </div>
+                    </div>
+                    
+                    <div class="keywords-panel negative">
+                        <div class="keywords-header">
+                            <span class="topic-emoji">⚠️</span>
+                            <h3>Critical Issues</h3>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>No seal/safety seal</span>
+                            <span class="keyword-count">18</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Pump issues</span>
+                            <span class="keyword-count">5</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Too expensive</span>
+                            <span class="keyword-count">6</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Sticky feeling</span>
+                            <span class="keyword-count">3</span>
+                        </div>
+                        
+                        <div class="keyword-item">
+                            <span>Delivery problems</span>
+                            <span class="keyword-count">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
